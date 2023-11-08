@@ -13,4 +13,5 @@ public:
 	Square();
 	void draw(sf :: RenderWindow& window);
 	void setPiece(ChessPiece* targetPiece);
+	ChessPiece* getPiece();
 };

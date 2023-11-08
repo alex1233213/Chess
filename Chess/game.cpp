@@ -3,6 +3,7 @@
 #include <iostream>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "board.h"
+#include "drag&drop.h"
 
 
 #define WINDOW_WIDTH 800
@@ -12,11 +13,7 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "CHESS");
     Board board(WINDOW_WIDTH, WINDOW_HEIGHT);
-
-    /*ChessPiece piece;
-    sf::Texture texture;
-    texture.loadFromFile("resources/w_king.png");
-    piece.getSprite().setTexture(texture);*/
+    DragAndDropHandler dragDropHandler;
 
     while (window.isOpen())
     {
@@ -24,9 +21,14 @@ int main()
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
+            {
                 window.close();
+            }
+            
+            dragDropHandler.listenDragDropEvent(event, board);
         }
 
+        window.clear();
         board.draw(window);
         window.display();
     }

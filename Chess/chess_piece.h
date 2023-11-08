@@ -14,6 +14,7 @@ private:
     int file;
     sf::Texture texture;
     sf::Sprite sprite;
+    bool isDragged = false;
 
 public:
     void draw(sf::RenderWindow& window);
@@ -24,4 +25,6 @@ public:
     void setRank(int);
     void setFile(int);
     void setTexture(const sf::Texture texture);
+    bool isBeingDragged();
+    void toggleDraggedState();
 };

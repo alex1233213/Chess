@@ -63,3 +63,20 @@ void ChessPiece::setTexture(const sf::Texture targetTexture)
     sprite.setTexture(texture);
     sprite.setScale(0.1f, 0.1f);
 }
+
+
+
+
+
+bool ChessPiece::isBeingDragged()
+{
+    return isDragged;
+}
+
+
+
+
+void ChessPiece::toggleDraggedState()
+{
+    isDragged = !isDragged;
+}

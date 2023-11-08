@@ -139,12 +139,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="board.cpp" />
+    <ClCompile Include="drag&amp;drop.cpp" />
     <ClCompile Include="square.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="chess_piece.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h" />
+    <ClInclude Include="drag&amp;drop.h" />
     <ClInclude Include="square.h" />
     <ClInclude Include="chess_piece.h" />
   </ItemGroup>

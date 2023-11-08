@@ -43,7 +43,7 @@ Board::Board(int window_width, int window_height)
 
     float window_area = window_width * window_height;
     float square_area = window_area / num_squares;
-    float square_side = sqrt(square_area);
+    square_side = sqrt(square_area);
     loadSquares(square_side);
     loadPieces();
 }
@@ -193,6 +193,24 @@ void Board::loadPiece(string texturePath, int file, int rank)
 
 void Board::addPiece(ChessPiece* piece, int rank, int file)
 {
+    // convert the iteration of the board into the squares notation.
+    //i.e. 8th rank becomes first rank as the white pieces are displayed at the bottom of the board
     int row = 7 - rank;
     squares[row][file].setPiece(piece);
+}
+
+
+
+
+
+float Board::getSquareSide()
+{
+    return square_side;
+}
+
+
+
+
+Square(&Board::getSquares())[8][8]{
+    return squares;
 }

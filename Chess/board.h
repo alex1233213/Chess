@@ -17,6 +17,7 @@ private:
     int num_squares = 64;
     int rows = 8;
     int cols = 8;
+    float square_side;
     sf::Color dark_square = sf::Color(181, 136, 99);
     sf::Color light_square = sf::Color(240, 217, 181);
     std::vector<ChessPiece*> pieces;
@@ -46,4 +47,6 @@ public:
     std::vector<ChessPiece*> getPieces();
     void loadPiece(string texturePath, int, int);
     void addPiece(ChessPiece*, int, int);
+    float getSquareSide();
+    Square(&getSquares())[8][8];
 };
