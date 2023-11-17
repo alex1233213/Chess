@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
+class Board;
 
 class ChessPiece
 {
@@ -17,7 +18,7 @@ private:
     bool isDragged = false;
 
 public:
-    void draw(sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window, Board* board);
     sf :: Sprite& getSprite();
     void setColor(sf :: Color);
     int getRank() const;

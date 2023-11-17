@@ -6,12 +6,13 @@ class Square
 {
 private:
 	sf::RectangleShape square;
-	ChessPiece* chessPiece;
+	ChessPiece* piece;
 
 public:
 	Square(sf::Vector2f position, sf::Color color, float size);
 	Square();
 	void draw(sf :: RenderWindow& window);
-	void setPiece(ChessPiece* targetPiece);
+	sf::Vector2f getPosition();
 	ChessPiece* getPiece();
+	void setPiece(ChessPiece*);
 };

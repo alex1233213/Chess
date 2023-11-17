@@ -49,4 +49,6 @@ public:
     void addPiece(ChessPiece*, int, int);
     float getSquareSide();
     Square(&getSquares())[8][8];
+    Square& getSquare(int rank, int file);
+    int getRank(int row);
 };

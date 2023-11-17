@@ -85,6 +85,12 @@ void Board :: draw(sf::RenderWindow& window)
             squares[i][j].draw(window);
         }
     }
+
+    //pieces
+    for (int i = 0; i < pieces.size(); ++i)
+    {
+        pieces[i]->draw(window, this);
+    }
 }
 
 
@@ -181,24 +187,13 @@ void Board::loadPiece(string texturePath, int file, int rank)
     else
     {
         piece->setTexture(texture);
-        pieces.push_back(piece);
         piece->setRank(rank);
         piece->setFile(file);
-        addPiece(piece, rank, file);
+        pieces.push_back(piece);
+        Square& targetSquare = getSquare(rank, file);
+        targetSquare.setPiece(piece);
     }
 }
-
-
-
-
-void Board::addPiece(ChessPiece* piece, int rank, int file)
-{
-    // convert the iteration of the board into the squares notation.
-    //i.e. 8th rank becomes first rank as the white pieces are displayed at the bottom of the board
-    int row = 7 - rank;
-    squares[row][file].setPiece(piece);
-}
-
 
 
 
@@ -213,4 +208,24 @@ float Board::getSquareSide()
 
 Square(&Board::getSquares())[8][8]{
     return squares;
+}
+
+
+
+
+
+Square& Board::getSquare(int rank, int file)
+{
+    //the board is displayed as white pieces at the bottom, therefore first rank is the last row in 2d array
+    int row = 7 - rank;
+
+    return squares[row][file];
+}
+
+
+
+//convert row from 2d array to rank notation, rank start at the bottom of the 2d array
+int Board::getRank(int row)
+{
+    return 7 - row;
 }

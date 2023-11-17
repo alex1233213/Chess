@@ -1,6 +1,6 @@
 #include "chess_piece.h"
 #include <iostream>
-
+#include "board.h"
 
 
 void ChessPiece :: setColor(sf :: Color color)
@@ -10,17 +10,25 @@ void ChessPiece :: setColor(sf :: Color color)
 
 
 
-void ChessPiece::draw(sf::RenderWindow& window)
+void ChessPiece::draw(sf::RenderWindow& window, Board* board)
 {
-    // Draw the sprite on the window
-    window.draw(sprite);
+    if (this->isBeingDragged()) {
+        window.draw(sprite);
+    }
+    else
+    {
+        Square square = board->getSquare(rank, file);
+        sprite.setPosition(square.getPosition());
+        window.draw(sprite);
+    }
+    
 }
 
 
 
 
 
-int ChessPiece ::  getRank() const
+int ChessPiece::getRank() const
 {
     return rank;
 }
