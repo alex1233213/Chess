@@ -46,7 +46,6 @@ public:
     void loadPieces();
     std::vector<ChessPiece*> getPieces();
     void loadPiece(string texturePath, int, int);
-    void addPiece(ChessPiece*, int, int);
     float getSquareSide();
     Square(&getSquares())[8][8];
     Square& getSquare(int rank, int file);

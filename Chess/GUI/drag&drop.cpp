@@ -12,7 +12,6 @@ std::pair<int, int> DragAndDropHandler::highlightedSquareXY(int mouseX, int mous
     int row = static_cast<int>((mouseY - 0) / board.getSquareSide());
     int col = static_cast<int>((mouseX - 0) / board.getSquareSide());
 
-    //return board.getSquares()[row][col];
     return std::make_pair(row, col);
 }
 
@@ -75,7 +74,5 @@ void DragAndDropHandler::listenDragDropEvent(sf::Event event, Board& board) {
             event.mouseMove.x - selectedPiece->getSprite().getGlobalBounds().width / 2,
             event.mouseMove.y - selectedPiece->getSprite().getGlobalBounds().height / 2
         );
-        
-        cout << "selected piece x: " << selectedPiece->getSprite().getPosition().x << " y: " << selectedPiece->getSprite().getPosition().x << endl;
     }
 }

@@ -15,33 +15,39 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="board.cpp">
+    <ClCompile Include="GUI\board.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="chess_piece.cpp">
+    <ClCompile Include="GUI\chess_piece.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="square.cpp">
+    <ClCompile Include="GUI\square.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="drag&amp;drop.cpp">
+    <ClCompile Include="GUI\drag&amp;drop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\chess_game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="board.h">
+    <ClInclude Include="GUI\board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="chess_piece.h">
+    <ClInclude Include="GUI\chess_piece.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="square.h">
+    <ClInclude Include="GUI\square.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="drag&amp;drop.h">
+    <ClInclude Include="GUI\drag&amp;drop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\chess_game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
