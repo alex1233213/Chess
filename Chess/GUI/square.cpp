@@ -8,6 +8,7 @@ Square::Square(sf::Vector2f position, sf::Color color, float size)
     square.setSize(sf::Vector2f(size, size));
     square.setPosition(position);
     square.setFillColor(color);
+    this->setPiece(nullptr);
 }
 
 

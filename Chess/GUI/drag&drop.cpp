@@ -6,6 +6,14 @@
 using namespace std;
 
 
+DragAndDropHandler::DragAndDropHandler() : selectedPiece(nullptr), dragEvent(false) {
+    // Other constructor initialization if needed
+}
+
+
+
+
+
 std::pair<int, int> DragAndDropHandler::highlightedSquareXY(int mouseX, int mouseY, Board board)
 {
     // Calculate the board coordinates (row and column) based on the mouse position
@@ -52,7 +60,7 @@ void DragAndDropHandler::listenDragDropEvent(sf::Event event, Board& board) {
 
     //when mouse is released, assign place piece on target square
     else if (event.type == sf::Event::MouseButtonReleased) {
-        if (event.mouseButton.button == sf::Mouse::Left && dragEvent) {
+        if (event.mouseButton.button == sf::Mouse::Left && dragEvent && selectedPiece != nullptr) {
             dragEvent = false;
             selectedPiece->toggleDraggedState(); // Reset the dragged state
 
