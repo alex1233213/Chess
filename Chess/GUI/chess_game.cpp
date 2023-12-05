@@ -2,7 +2,7 @@
 #include "drag&drop.h"
 #include "chess_game.h"
 
-ChessGame::ChessGame(int windowWidth, int windowHeight) : board(windowWidth, windowHeight), currentPlayer("white") {}
+ChessGame::ChessGame(int windowWidth, int windowHeight) : board(windowWidth, windowHeight, boardState.getBitboards()), currentPlayer("white") {}
 
 
 

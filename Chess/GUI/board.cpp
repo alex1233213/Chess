@@ -3,49 +3,18 @@
 #include <iostream>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "board.h"
-
-
-
-#define WHITE_PAWN "resources/wP.png"
-#define BLACK_PAWN "resources/bP.png"
-#define WHITE_KING "resources/wK.png"
-#define BLACK_KING "resources/bK.png"
-#define WHITE_ROOK "resources/wR.png"
-#define BLACK_ROOK "resources/bR.png"
-#define WHITE_BISHOP "resources/wB.png"
-#define BLACK_BISHOP "resources/bB.png"
-#define WHITE_QUEEN "resources/wQ.png"
-#define BLACK_QUEEN "resources/bQ.png"
-#define WHITE_KNIGHT "resources/wKn.png"
-#define BLACK_KNIGHT "resources/bKn.png"
-
+#include "piece_paths.h"
 
 
 
 // board constructor
-Board::Board(int window_width, int window_height)
+Board::Board(int window_width, int window_height, map<string, Bitboard> bitboards)
 {
-    // Black pieces bitboards
-    bPawns = 0b0000000000000000000000000000000000000000000000001111111100000000;
-    bRooks = 0b0000000000000000000000000000000000000000000000000000000010000001;
-    bBishops = 0b0000000000000000000000000000000000000000000000000000000000100100;
-    bKnights = 0b0000000000000000000000000000000000000000000000000000000001000010;
-    bKing = 1ULL << 3;
-    bQueen = 1ULL << 4;
-
-    // White pieces bitboards
-    wPawns = 0b0000000011111111000000000000000000000000000000000000000000000000;
-    wRooks = 0b1000000100000000000000000000000000000000000000000000000000000000;
-    wBishops = 0b010010000000000000000000000000000000000000000000000000000000000;
-    wKnights = 0b0100001000000000000000000000000000000000000000000000000000000000;
-    wKing = 0b0000100000000000000000000000000000000000000000000000000000000000;
-    wQueen = 0b0001000000000000000000000000000000000000000000000000000000000000;
-
     float window_area = window_width * window_height;
     float square_area = window_area / num_squares;
     square_side = sqrt(square_area);
     loadSquares(square_side);
-    loadPieces();
+    loadPieces(bitboards);
 }
 
 
@@ -96,7 +65,7 @@ void Board :: draw(sf::RenderWindow& window)
 
 
 
-void Board::loadPieces()
+void Board::loadPieces(map<string, Bitboard> bitboards)
 {
     for (int i = 0; i < num_squares; ++i)
     {
@@ -104,64 +73,16 @@ void Board::loadPieces()
         int file = 7 - (i % 8);
         int rank = 7 - (i / 8);
 
-        if (wPawns & (1ULL << i))
+        for (auto const& pieceBitboard : bitboards)
         {
-            loadPiece(WHITE_PAWN, file, rank);
-        }
+            string piece = pieceBitboard.first;
+            Bitboard bitboard = pieceBitboard.second;
 
-        if (bPawns & (1ULL << i))
-        {
-            loadPiece(BLACK_PAWN, file, rank);
-        }
-
-        if (wKnights & (1ULL << i))
-        {
-            loadPiece(WHITE_KNIGHT, file, rank);
-        }
-
-        if (bKnights & (1ULL << i))
-        {
-            loadPiece(BLACK_KNIGHT, file, rank);
-        }
-
-        if (wRooks & (1ULL << i))
-        {
-            loadPiece(WHITE_ROOK, file, rank);
-        }
-
-        if (bRooks & (1ULL << i))
-        {
-            loadPiece(BLACK_ROOK, file, rank);
-        }
-
-        if (wKing & (1ULL << i))
-        {
-            loadPiece(WHITE_KING, file, rank);
-        }
-
-        if (bKing & (1ULL << i))
-        {
-            loadPiece(BLACK_KING, file, rank);
-        }
-
-        if (wQueen & (1ULL << i))
-        {
-            loadPiece(WHITE_QUEEN, file, rank);
-        }
-
-        if (bQueen & (1ULL << i))
-        {
-            loadPiece(BLACK_QUEEN, file, rank);
-        }
-
-        if (bBishops & (1ULL << i))
-        {
-            loadPiece(BLACK_BISHOP, file, rank);
-        }
-
-        if (wBishops & (1ULL << i))
-        {
-            loadPiece(WHITE_BISHOP, file, rank);
+            auto it = imagePathMap.find(piece);
+            if (it != imagePathMap.end() && (bitboard.getBoard() & 1ULL << i))
+            {
+                loadPiece(it->second, file, rank);
+            }
         }
     }
 }

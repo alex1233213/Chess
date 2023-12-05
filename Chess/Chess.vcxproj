@@ -107,7 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Alex\Desktop\all\C++\chess_game\Chess\Chess\GUI;C:\Users\Alex\Desktop\all\C++\chess_game\Chess\Chess\Engine;C:\SFML\SFML-2.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Alex\Desktop\all\C++\chess_game\Chess\Chess\Interface;C:\Users\Alex\Desktop\all\C++\chess_game\Chess\Chess\GUI;C:\Users\Alex\Desktop\all\C++\chess_game\Chess\Chess\Engine;C:\SFML\SFML-2.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
@@ -138,19 +138,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\bitboard.cpp" />
+    <ClCompile Include="Engine\chess_engine.cpp" />
     <ClCompile Include="GUI\board.cpp" />
     <ClCompile Include="GUI\chess_game.cpp" />
     <ClCompile Include="GUI\drag&amp;drop.cpp" />
     <ClCompile Include="GUI\square.cpp" />
+    <ClCompile Include="Interface\board_state.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="GUI\chess_piece.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\bitboard.h" />
+    <ClInclude Include="Engine\chess_engine.h" />
     <ClInclude Include="GUI\board.h" />
     <ClInclude Include="GUI\chess_game.h" />
     <ClInclude Include="GUI\drag&amp;drop.h" />
+    <ClInclude Include="GUI\piece_paths.h" />
     <ClInclude Include="GUI\square.h" />
     <ClInclude Include="GUI\chess_piece.h" />
+    <ClInclude Include="Interface\board_state.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
